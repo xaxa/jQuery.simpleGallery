@@ -1,6 +1,13 @@
+== USAGE
+
 You must have an element (like a div) containing all your images, and nothing more.
 
 And then you must use $(element).simpleGallery() to initialize.
 
 $(element).showNext() will show the next image. 
 $(element).showPrevious() will show the previous image.
+
+
+== See a live demo
+
+http://viniciusxaxa.com.br/jQuery.simpleGallery/example/example.html
