@@ -1,0 +1,6 @@
+You must have a element with all your images. And there only have these images.
+
+And then you must use $(element).simpleGallery() to initialize.
+
+$(element).showNext() will show the next image. 
+$(element).showPrevious() will show the previous image.
