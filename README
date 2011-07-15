@@ -1,4 +1,4 @@
-You must have a element with all your images. And there only have these images.
+You must have an element (like a div) containing all your images, and nothing more.
 
 And then you must use $(element).simpleGallery() to initialize.
 
