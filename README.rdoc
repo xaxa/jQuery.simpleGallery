@@ -1,11 +1,15 @@
 == USAGE
 
-You must have an element (like a div) containing all your images, and nothing more.
+You must have a block element containing all your images, and p element inside it if you want a image description.
 
-And then you must use $(element).simpleGallery() to initialize.
+And then you must use $(element).simpleGallery() to initialize and have the simpleGallery object returned.
 
-$(element).showNext() will show the next image. 
-$(element).showPrevious() will show the previous image.
+gallery_object = $('#myGallery').simpleGallery()
+
+gallery_object.next() will show the next image. 
+gallery_object.previous() will show the previous image.
+
+If want to add a description to the image, just add a p element inside the container and add the description into the title of the image.
 
 
 == See a live demo
