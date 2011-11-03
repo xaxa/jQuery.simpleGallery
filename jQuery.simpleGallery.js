@@ -1,38 +1,55 @@
 /*
 *   jQuery.simpleGallery
 *   ----------------------
-*   version: 1.0.0
-*   date: 7/13/11
+*   version: 2.0
+*   date: 7/15/11
 *
 *   Copyright (c) 2011 Vinicius Xaxá
-*   
-*   
-*   
+
 *   Licensed under the Apache License 2.0
 *
 */
 (function ($) {
 	$.fn.simpleGallery = function () {
-		$(this).children('img').hide();
-		$(this).children('img:first').addClass('show').show();
-    };
-    
-	$.fn.showNext = function () {
-		current_image = $(this).children('.show');
-		current_image.removeClass('show').hide();
-		if(current_image.next().length > 0) 
-			current_image.next().addClass('show').show();
-		else
-			$(this).children('img:first').addClass('show').show();
-    };
+		var images = $(this).children('img');
+		var description = $(this).find('p');
+		images.hide();
+		$(images[0]).addClass('show').show();
+		var current_image = 0;
+		var last_image = images.length - 1;
+		
+		set_description = function(new_description){
+			if(new_description != "" && typeof new_description != "undefined") {
+				$(description).show();
+				$(description).html(new_description);
+			}else{
+				$(description).hide();
+			}
+		}
+		set_description($(images[0]).attr('title'));
+		
+		return {
+			images: images,
+			description: description,
+			
+			next: function(){
+				$(images[current_image]).hide();
+				current_image == last_image ? current_image = 0 : current_image++;
+				$(images[current_image]).show();
+				new_description = $(images[current_image]).attr('title');
+				set_description(new_description);
 
-    $.fn.showPrevious = function () {
-		current_image = $(this).children('.show');
-		current_image.removeClass('show').hide();
-		if(current_image.prev().length > 0) 
-			current_image.prev().addClass('show').show();
-		else
-			$(this).children('img:last').addClass('show').show();
-				
-    };
+			},
+			previous: function(){
+				$(images[current_image]).hide();
+				current_image == 0 ? current_image = last_image : current_image--;
+				$(images[current_image]).show();
+				new_description = $(images[current_image]).attr('title');
+				set_description(new_description);
+			},
+			current_image: function(){
+				return images[current_image];
+			}
+		}
+  };
 })(jQuery);
